@@ -48,7 +48,8 @@ const decodeJwtToken = async token => {
   } catch (err) {
     const {data} = await axios({
       method: 'post',
-      url:  `${process.env.EXTERNAL_JWT_VALIDATION}validatejwt.ajx`,
+      url: 'http://localhost/preview/validatejwt.ajx',
+      // url:  `${process.env.EXTERNAL_JWT_VALIDATION}validatejwt.ajx`,
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -57,7 +58,7 @@ const decodeJwtToken = async token => {
 
     if (data.validity) {
       const payload = jwt.decode(token)
-
+      console.log(payload)
       return { payload: { email: payload.email, iat: 1618327950, exp: 1620919950, role: payload.adminRoleName, firstName: payload.adminFirstName, lastName: payload.adminLastName},  isValid: data.validity };
     }
 
