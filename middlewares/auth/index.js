@@ -17,13 +17,16 @@ module.exports = strapi => ({
         const token = ctx.request.header.authorization.split(' ')[1];
         const { payload, isValid } = await strapi.admin.services.token.decodeJwtToken(token);
         if (isValid) {
+          console.log("isValid", isValid)
           // request is made by an admin
           let admin = await strapi.query('user', 'admin').findOne({ id: payload.id }, ['roles']);
-
+          console.log("admin", admin)
           // create
           if(admin === null){
             try {
+              console.log("create admin")
               const role = await strapi.admin.services.role.findOne({ name:  payload.role });
+              console.log("create role", role)
               const hashedPassword = await strapi.admin.services.auth.hashPassword("Demo1234");
               console.log("hashed pass", hashedPassword)
               admin = await  createManually(
