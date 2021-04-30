@@ -15,9 +15,7 @@ module.exports = strapi => ({
         ctx.request.header.authorization.split(' ')[0] === 'Bearer'
       ) {
         const token = ctx.request.header.authorization.split(' ')[1];
-        console.log("1234", token)
         const { payload, isValid } = await strapi.admin.services.token.decodeJwtToken(token);
-        console.log("payload", payload)
         if (isValid) {
           // request is made by an admin
           let admin = await strapi.query('user', 'admin').findOne({ id: payload.id }, ['roles']);

@@ -90,20 +90,6 @@ const HomePage = ({ history: { push } }) => {
     ? 'HomePage.greetings'
     : 'app.components.HomePage.welcome';
   const username = get(auth.getUserInfo(), 'firstname', '');
-  const linkProps = hasAlreadyCreatedContentTypes
-    ? {
-        id: 'app.components.HomePage.button.blog',
-        href: 'https://strapi.io/blog/',
-        onClick: () => {},
-        type: 'blog',
-        target: '_blank',
-      }
-    : {
-        id: 'app.components.HomePage.create',
-        href: '',
-        onClick: handleClick,
-        type: 'documentation',
-      };
 
   return (
     <>
@@ -112,7 +98,7 @@ const HomePage = ({ history: { push } }) => {
       </FormattedMessage>
       <Container className="container-fluid">
         <div className="row">
-          <div className="col-lg-8 col-md-12">
+          <div className="col-lg-12 col-md-12">
             <Block>
               <Wave />
               <FormattedMessage
@@ -152,84 +138,84 @@ const HomePage = ({ history: { push } }) => {
                   }}
                 </FormattedMessage>
               )}
-              {hasAlreadyCreatedContentTypes && (
-                <div style={{ marginTop: isLoading ? 60 : 50 }}>
-                  {posts.map((post, index) => (
-                    <BlogPost
-                      {...post}
-                      key={post.link}
-                      isFirst={index === 0}
-                      isLoading={isLoading}
-                      error={error}
-                    />
-                  ))}
-                </div>
-              )}
-              <FormattedMessage id={linkProps.id}>
-                {msg => (
-                  <ALink
-                    rel="noopener noreferrer"
-                    {...linkProps}
-                    style={{ verticalAlign: ' bottom', marginBottom: 5 }}
-                  >
-                    {msg}
-                  </ALink>
-                )}
-              </FormattedMessage>
+              {/*{hasAlreadyCreatedContentTypes && (*/}
+              {/*  <div style={{ marginTop: isLoading ? 60 : 50 }}>*/}
+              {/*    {posts.map((post, index) => (*/}
+              {/*      <BlogPost*/}
+              {/*        {...post}*/}
+              {/*        key={post.link}*/}
+              {/*        isFirst={index === 0}*/}
+              {/*        isLoading={isLoading}*/}
+              {/*        error={error}*/}
+              {/*      />*/}
+              {/*    ))}*/}
+              {/*  </div>*/}
+              {/*)}*/}
+              {/*<FormattedMessage id={linkProps.id}>*/}
+              {/*  {msg => (*/}
+              {/*    <ALink*/}
+              {/*      rel="noopener noreferrer"*/}
+              {/*      {...linkProps}*/}
+              {/*      style={{ verticalAlign: ' bottom', marginBottom: 5 }}*/}
+              {/*    >*/}
+              {/*      {msg}*/}
+              {/*    </ALink>*/}
+              {/*  )}*/}
+              {/*</FormattedMessage>*/}
               <Separator style={{ marginTop: 37, marginBottom: 36 }} />
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                {FIRST_BLOCK_LINKS.map((data, index) => {
-                  const type = index === 0 ? 'doc' : 'code';
+              {/*<div style={{ display: 'flex', justifyContent: 'space-between' }}>*/}
+              {/*  {FIRST_BLOCK_LINKS.map((data, index) => {*/}
+              {/*    const type = index === 0 ? 'doc' : 'code';*/}
 
-                  return (
-                    <LinkWrapper href={data.link} target="_blank" key={data.link} type={type}>
-                      <FormattedMessage id={data.titleId}>
-                        {title => <p className="bold">{title}</p>}
-                      </FormattedMessage>
-                      <FormattedMessage id={data.contentId}>
-                        {content => <p>{content}</p>}
-                      </FormattedMessage>
-                    </LinkWrapper>
-                  );
-                })}
-              </div>
+              {/*    return (*/}
+              {/*      <LinkWrapper href={data.link} target="_blank" key={data.link} type={type}>*/}
+              {/*        <FormattedMessage id={data.titleId}>*/}
+              {/*          {title => <p className="bold">{title}</p>}*/}
+              {/*        </FormattedMessage>*/}
+              {/*        <FormattedMessage id={data.contentId}>*/}
+              {/*          {content => <p>{content}</p>}*/}
+              {/*        </FormattedMessage>*/}
+              {/*      </LinkWrapper>*/}
+              {/*    );*/}
+              {/*  })}*/}
+              {/*</div>*/}
             </Block>
           </div>
 
-          <div className="col-md-12 col-lg-4">
-            <Block style={{ paddingRight: 30, paddingBottom: 0 }}>
-              <FormattedMessage id="HomePage.community">{msg => <h2>{msg}</h2>}</FormattedMessage>
-              <FormattedMessage id="app.components.HomePage.community.content">
-                {content => <P style={{ marginTop: 7, marginBottom: 0 }}>{content}</P>}
-              </FormattedMessage>
-              <FormattedMessage id="HomePage.roadmap">
-                {msg => (
-                  <ALink
-                    rel="noopener noreferrer"
-                    href="https://portal.productboard.com/strapi/1-public-roadmap/tabs/2-under-consideration"
-                    target="_blank"
-                  >
-                    {msg}
-                  </ALink>
-                )}
-              </FormattedMessage>
+          {/*<div className="col-md-12 col-lg-4">*/}
+          {/*  <Block style={{ paddingRight: 30, paddingBottom: 0 }}>*/}
+          {/*    <FormattedMessage id="HomePage.community">{msg => <h2>{msg}</h2>}</FormattedMessage>*/}
+          {/*    <FormattedMessage id="app.components.HomePage.community.content">*/}
+          {/*      {content => <P style={{ marginTop: 7, marginBottom: 0 }}>{content}</P>}*/}
+          {/*    </FormattedMessage>*/}
+          {/*    <FormattedMessage id="HomePage.roadmap">*/}
+          {/*      {msg => (*/}
+          {/*        <ALink*/}
+          {/*          rel="noopener noreferrer"*/}
+          {/*          href="https://portal.productboard.com/strapi/1-public-roadmap/tabs/2-under-consideration"*/}
+          {/*          target="_blank"*/}
+          {/*        >*/}
+          {/*          {msg}*/}
+          {/*        </ALink>*/}
+          {/*      )}*/}
+          {/*    </FormattedMessage>*/}
 
-              <Separator style={{ marginTop: 18 }} />
-              <div
-                className="row social-wrapper"
-                style={{
-                  display: 'flex',
-                  margin: 0,
-                  marginTop: 36,
-                  marginLeft: -15,
-                }}
-              >
-                {SOCIAL_LINKS.map((value, key) => (
-                  <SocialLink key={key} {...value} />
-                ))}
-              </div>
-            </Block>
-          </div>
+          {/*    <Separator style={{ marginTop: 18 }} />*/}
+          {/*    <div*/}
+          {/*      className="row social-wrapper"*/}
+          {/*      style={{*/}
+          {/*        display: 'flex',*/}
+          {/*        margin: 0,*/}
+          {/*        marginTop: 36,*/}
+          {/*        marginLeft: -15,*/}
+          {/*      }}*/}
+          {/*    >*/}
+          {/*      {SOCIAL_LINKS.map((value, key) => (*/}
+          {/*        <SocialLink key={key} {...value} />*/}
+          {/*      ))}*/}
+          {/*    </div>*/}
+          {/*  </Block>*/}
+          {/*</div>*/}
         </div>
       </Container>
     </>
