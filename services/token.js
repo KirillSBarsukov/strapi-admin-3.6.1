@@ -49,8 +49,7 @@ const decodeJwtToken = async token => {
     console.log("err", err)
     const {data} = await axios({
       method: 'post',
-      url: 'http://localhost/preview/validatejwt.ajx',
-      //// url:  `${process.env.EXTERNAL_JWT_VALIDATION}validatejwt.ajx`,
+      url:  `${process.env.EXTERNAL_JWT_VALIDATION}validatejwt.ajx`,
       headers: {
         Authorization: `Bearer ${token}`
       }
