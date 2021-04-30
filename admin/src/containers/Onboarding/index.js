@@ -80,55 +80,7 @@ const OnboardingVideos = () => {
   const hasVideos = videos.length > 0;
   const className = hasVideos ? 'visible' : 'hidden';
 
-  return (
-    <Wrapper className={className} isOpen={isOpen}>
-      <div className={cn('videosContent', isOpen ? 'shown' : 'hide')}>
-        <div className="videosHeader">
-          <p>
-            <FormattedMessage id="app.components.Onboarding.title" />
-          </p>
-          <p>
-            {Math.floor((videos.filter(v => v.end).length * 100) / videos.length)}
-            <FormattedMessage id="app.components.Onboarding.label.completed" />
-          </p>
-        </div>
-        <ul className="onboardingList">
-          {videos.map((video, index) => (
-            <Video
-              key={video.id || index}
-              id={index}
-              video={video}
-              onClick={() => handleClickOpenVideo(index)}
-              setVideoDuration={(_, duration) => {
-                setVideoDuration(index, duration);
-              }}
-              getVideoCurrentTime={(_, elapsedTime) => {
-                handleUpdateVideoStartTime(index, elapsedTime);
-              }}
-              didPlayVideo={(_, elapsedTime) => {
-                const eventName = `didPlay${index}GetStartedVideo`;
-
-                emitEvent(eventName, { timestamp: elapsedTime });
-              }}
-              didStopVideo={(_, elapsedTime) => {
-                const eventName = `didStop${index}Video`;
-
-                emitEvent(eventName, { timestamp: elapsedTime });
-              }}
-            />
-          ))}
-        </ul>
-        <StaticLinks />
-      </div>
-      <div className="openBtn">
-        <button onClick={handleClick} className={isOpen ? 'active' : ''} type="button">
-          <FontAwesomeIcon icon={faQuestion} />
-          <FontAwesomeIcon icon={faTimes} />
-          <span />
-        </button>
-      </div>
-    </Wrapper>
-  );
+  return null;
 };
 
 export default memo(OnboardingVideos);
