@@ -37,7 +37,7 @@ const create = async attributes => {
   console.log("userInfo", userInfo)
   const user = createUser(userInfo);
   console.log("user", user)
-  const createdUser = await strapi.query('user', 'admin').create(user);
+  const createdUser = await strapi.query('user-test', 'admin').create(user);
 
   await strapi.admin.services.metrics.sendDidInviteUser();
 
