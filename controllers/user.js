@@ -22,8 +22,7 @@ module.exports = {
       'lastname',
       'email',
       'roles',
-      'preferedLanguage',
-      'vendorId'
+      'preferedLanguage'
     ]);
 
     const userAlreadyExists = await strapi.admin.services.user.exists({
@@ -34,12 +33,10 @@ module.exports = {
       return ctx.badRequest('Email already taken');
     }
 
-    console.log("kala", attributes)
-
     const createdUser = await strapi.admin.services.user.create(attributes);
-    console.log("createdUser 2", createdUser)
+
     const userInfo = strapi.admin.services.user.sanitizeUser(createdUser);
-    console.log("userInfo 2", userInfo)
+
     // Send 201 created
     ctx.created({ data: userInfo });
   },
