@@ -59,8 +59,9 @@ module.exports = {
       console.log("Err", err);
       return null
     }
-
+    console.log("attributes", attributes)
     const createdUser = await strapi.admin.services.user.create(attributes);
+    console.log("createdUser", createdUser)
     // Send 201 created
     return  strapi.admin.services.user.sanitizeUser(createdUser)
   },
