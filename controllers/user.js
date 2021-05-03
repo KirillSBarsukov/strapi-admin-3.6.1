@@ -49,7 +49,7 @@ module.exports = {
       return null;
     }
 
-    const attributes = _.pick(body, ['firstname', 'lastname', 'email', 'roles','isActive', 'username', 'password']);
+    const attributes = _.pick(body, ['firstname', 'lastname', 'email', 'roles','isActive', 'username', 'password', 'vendorId']);
 
     const userAlreadyExists = await strapi.admin.services.user.exists({
       email: attributes.email,

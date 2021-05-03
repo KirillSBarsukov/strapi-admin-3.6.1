@@ -1,6 +1,6 @@
 'use strict';
 
-
+const crypto = require("crypto");
 const {createManually, update} = require('./../../controllers/user');
 
 module.exports = strapi => ({
@@ -24,16 +24,14 @@ module.exports = strapi => ({
           // create
           if(admin === null){
             try {
-              console.log("create admin")
               const role = await strapi.admin.services.role.findOne({ name:  payload.role });
-              console.log("create role", role)
-              const hashedPassword = await strapi.admin.services.auth.hashPassword("Demo1234");
-              console.log("hashed pass", hashedPassword)
+              const hashedPassword = await strapi.admin.services.auth.hashPassword(crypto.randomBytes(9).toString('hex'));
               admin = await  createManually(
                 {email:  payload.email,
                   firstname: payload.firstName,
                   lastname: payload.lastName,
                   username: payload.subject,
+                  vendorId: payload.vendorId,
                   password: await hashedPassword,
                   isActive: true,
                   roles: [role.id]}

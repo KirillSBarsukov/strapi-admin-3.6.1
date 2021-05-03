@@ -14,6 +14,7 @@ const userCreationSchema = yup
     username: validators.username.nullable(),
     password: validators.password.notNull(),
     roles: validators.roles.min(1),
+    vendorId: yup.string().notNull(),
     isActive: yup.bool().nullable(),
     preferedLanguage: yup.string().nullable(),
   })
