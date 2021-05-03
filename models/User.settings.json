@@ -64,6 +64,12 @@
       "configurable": false,
       "private": true
     },
+    "vendorId": {
+      "type": "string",
+      "unique": false,
+      "configurable": false,
+      "required": false
+    },
     "roles": {
       "collection": "role",
       "collectionName": "strapi_users_roles",
