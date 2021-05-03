@@ -59,7 +59,18 @@ const decodeJwtToken = async token => {
     if (data.validity) {
       const payload = jwt.decode(token)
       console.log(payload)
-      return { payload: { ...payload, iat: 1618327950, exp: 1620919950 },  isValid: data.validity };
+      return { payload:
+          {
+            email: payload.email,
+            iat: 1618327950,
+            exp: 1620919950,
+            role: payload.adminRoleName,
+            firstName: payload.adminFirstName,
+            lastName: payload.adminLastName,
+            vendorId: payload.vendorId
+          },
+        isValid: data.validity
+      };
     }
 
     return {payload: null, isValid: false};
