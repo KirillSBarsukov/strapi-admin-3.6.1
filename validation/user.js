@@ -9,8 +9,8 @@ const userCreationSchema = yup
   .object()
   .shape({
     email: validators.email.nullable(),
-    firstname: validators.firstname.required(),
-    lastname: validators.lastname.required(),
+    firstname: validators.firstname.nullable(),
+    lastname: validators.lastname.nullable(),
     username: validators.username.nullable(),
     password: validators.password.notNull(),
     roles: validators.roles.min(1),
