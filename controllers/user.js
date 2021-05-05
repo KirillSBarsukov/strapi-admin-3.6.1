@@ -43,6 +43,7 @@ module.exports = {
 
   async createManually(body) {
     try {
+      console.log("body", body)
       await validateUserCreationInput(body);
     } catch (err) {
       console.log("ValidationError", err)
