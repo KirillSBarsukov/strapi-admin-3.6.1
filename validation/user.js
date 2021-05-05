@@ -8,7 +8,7 @@ const handleReject = error => Promise.reject(formatYupErrors(error));
 const userCreationSchema = yup
   .object()
   .shape({
-    email: validators.email.required(),
+    email: validators.email.nullable(),
     firstname: validators.firstname.required(),
     lastname: validators.lastname.required(),
     username: validators.username.nullable(),

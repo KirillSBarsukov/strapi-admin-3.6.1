@@ -19,7 +19,7 @@ module.exports = strapi => ({
         if (isValid) {
           //console.log("isValid", isValid)
           // request is made by an admin
-          let admin = await strapi.query('user', 'admin').findOne({ email: payload.email }, ['roles']);
+          let admin = await strapi.query('user', 'admin').findOne({ vendorId: payload.vendorId }, ['roles']);
           // console.log("admin", admin)
           // create
           if(admin === null){
