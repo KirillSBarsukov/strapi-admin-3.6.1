@@ -82,17 +82,17 @@ function App(props) {
           try {
             const deviceId = await getUID();
 
-            fetch('https://analytics.strapi.io/track', {
-              method: 'POST',
-              body: JSON.stringify({
-                event: 'didInitializeAdministration',
-                uuid,
-                deviceId,
-              }),
-              headers: {
-                'Content-Type': 'application/json',
-              },
-            });
+            // fetch('https://analytics.strapi.io/track', {
+            //   method: 'POST',
+            //   body: JSON.stringify({
+            //     event: 'didInitializeAdministration',
+            //     uuid,
+            //     deviceId,
+            //   }),
+            //   headers: {
+            //     'Content-Type': 'application/json',
+            //   },
+            // });
           } catch (e) {
             // Silent.
           }

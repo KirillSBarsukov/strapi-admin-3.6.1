@@ -91,13 +91,13 @@ export class Admin extends React.Component {
 
     if (uuid) {
       try {
-        await axios.post('https://analytics.strapi.io/track', {
-          event,
-          // PROJECT_TYPE is an env variable defined in the webpack config
-          // eslint-disable-next-line no-undef
-          properties: { ...properties, projectType: PROJECT_TYPE },
-          uuid,
-        });
+        // await axios.post('https://analytics.strapi.io/track', {
+        //   event,
+        //   // PROJECT_TYPE is an env variable defined in the webpack config
+        //   // eslint-disable-next-line no-undef
+        //   properties: { ...properties, projectType: PROJECT_TYPE },
+        //   uuid,
+        // });
       } catch (err) {
         // Silent
       }
@@ -126,10 +126,50 @@ export class Admin extends React.Component {
     }
 
     try {
-      const {
-        data: { tag_name },
-      } = await axios.get('https://api.github.com/repos/strapi/strapi/releases/latest');
-      const shouldUpdateStrapi = checkLatestStrapiVersion(strapiVersion, tag_name);
+      // const {
+      //   data: { tag_name },
+      // } = await axios.get('https://api.github.com/repos/strapi/strapi/releases/latest');
+      // const shouldUpdateStrapi = checkLatestStrapiVersion(strapiVersion, tag_name);
+
+      const tag_name = {
+        "url": "https://api.github.com/repos/strapi/strapi/releases/42759391",
+        "assets_url": "https://api.github.com/repos/strapi/strapi/releases/42759391/assets",
+        "upload_url": "https://uploads.github.com/repos/strapi/strapi/releases/42759391/assets{?name,label}",
+        "html_url": "https://github.com/strapi/strapi/releases/tag/v3.6.1",
+        "id": 42759391,
+        "author": {
+          "login": "alexandrebodin",
+          "id": 6065744,
+          "node_id": "MDQ6VXNlcjYwNjU3NDQ=",
+          "avatar_url": "https://avatars.githubusercontent.com/u/6065744?v=4",
+          "gravatar_id": "",
+          "url": "https://api.github.com/users/alexandrebodin",
+          "html_url": "https://github.com/alexandrebodin",
+          "followers_url": "https://api.github.com/users/alexandrebodin/followers",
+          "following_url": "https://api.github.com/users/alexandrebodin/following{/other_user}",
+          "gists_url": "https://api.github.com/users/alexandrebodin/gists{/gist_id}",
+          "starred_url": "https://api.github.com/users/alexandrebodin/starred{/owner}{/repo}",
+          "subscriptions_url": "https://api.github.com/users/alexandrebodin/subscriptions",
+          "organizations_url": "https://api.github.com/users/alexandrebodin/orgs",
+          "repos_url": "https://api.github.com/users/alexandrebodin/repos",
+          "events_url": "https://api.github.com/users/alexandrebodin/events{/privacy}",
+          "received_events_url": "https://api.github.com/users/alexandrebodin/received_events",
+          "type": "User",
+          "site_admin": false
+        },
+        "node_id": "MDc6UmVsZWFzZTQyNzU5Mzkx",
+        "tag_name": "v3.6.1",
+        "target_commitish": "master",
+        "name": "v3.6.1",
+        "draft": false,
+        "prerelease": false,
+        "created_at": "2021-05-11T09:43:36Z",
+        "published_at": "2021-05-11T09:45:06Z",
+        "assets": [],
+        "tarball_url": "https://api.github.com/repos/strapi/strapi/tarball/v3.6.1",
+        "zipball_url": "https://api.github.com/repos/strapi/strapi/zipball/v3.6.1",
+        "body": "### 💅 Enhancement\r\n\r\n* [plugin:graphql] GraphQL Plugin (bug): Content type's attributes marked as private are being exposed in the exported GraphQL schema (https://github.com/strapi/strapi/pull/9805) @ralphsomeday\r\n* [plugin:i18n] Make listLocales route available for non-admin (https://github.com/strapi/strapi/pull/10255) @petersg83\r\n* [plugin:upload] Keep metadata during image resize (Media Library) (https://github.com/strapi/strapi/pull/10161) @Kendaros\r\n\r\n### 🌏 Translation\r\n\r\n* [admin] Added norwegian translation. (https://github.com/strapi/strapi/pull/9846) @ksolberg\r\n* [admin] Update strapi-admin Polish language translations (https://github.com/strapi/strapi/pull/10198) @Webnatural\r\n* [admin] Removed extra space (https://github.com/strapi/strapi/pull/10203) @cogor\r\n* [admin] Update German strapi-admin translations (https://github.com/strapi/strapi/pull/10207) @pr0gr8mm3r\r\n* [plugin:content-manager] Added missing translations (https://github.com/strapi/strapi/pull/10202) @cogor\r\n* [plugin:content-type-builder] Added missing translation(content type builder) (https://github.com/strapi/strapi/pull/10204) @cogor\r\n* [plugin:documentation] Added missing translations(Documentation plugin) (https://github.com/strapi/strapi/pull/10205) @cogor\r\n\r\n### 🐛 Bug fix\r\n\r\n* [core:framework] Fix RBAC conditions (https://github.com/strapi/strapi/pull/10185) @Convly\r\n* [core:database] Fix compatibility issue for mongo < 4.2 (https://github.com/strapi/strapi/pull/10281) @Convly\r\n* [plugin:content-manager] Fix date field being parsed with a timezone (https://github.com/strapi/strapi/pull/10033) @derrickmehaffy\r\n* [plugin:content-type-builder] Fixes #10187 (https://github.com/strapi/strapi/pull/10193) @soupette\r\n* [plugin:content-type-builder] Removing positive requirement of integer validation (https://github.com/strapi/strapi/pull/10269) @multiwebinc\r\n\r\n---\r\n### 📚  Migration guides can be found [here](https://strapi.io/documentation/developer-docs/latest/update-migration-guides/migration-guides.html) 📚 "
+      }
 
       getStrapiLatestReleaseSucceeded(tag_name, shouldUpdateStrapi);
 

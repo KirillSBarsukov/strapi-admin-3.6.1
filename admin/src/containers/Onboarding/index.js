@@ -22,9 +22,41 @@ const OnboardingVideos = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get('https://strapi.io/videos', {
-          timeout: 1000,
-        });
+        // const { data } = await axios.get('https://strapi.io/videos', {
+        //   timeout: 1000,
+        // });
+        const data = [
+          {
+            "id": 1,
+            "title": "Create your first content-type",
+            "video": "https://s3-us-west-2.amazonaws.com/strapi-video-help/create-first-content-type.mp4",
+            "preview": "https://s3-us-west-2.amazonaws.com/strapi-video-help/create-first-content-type.png",
+            "published": true,
+            "order": 0,
+            "created_at": "2020-05-18T15:49:01.080Z",
+            "updated_at": "2020-05-18T15:49:01.080Z"
+          },
+          {
+            "id": 2,
+            "title": "Fill your content with data",
+            "video": "https://s3-us-west-2.amazonaws.com/strapi-video-help/fill-data.mp4",
+            "preview": "https://s3-us-west-2.amazonaws.com/strapi-video-help/fill-data.png",
+            "published": true,
+            "order": 1,
+            "created_at": "2020-05-18T15:49:21.503Z",
+            "updated_at": "2020-05-18T15:49:21.503Z"
+          },
+          {
+            "id": 3,
+            "title": "Fetch data through the API",
+            "video": "https://s3-us-west-2.amazonaws.com/strapi-video-help/access-fetch-api.mp4",
+            "preview": "https://s3-us-west-2.amazonaws.com/strapi-video-help/access-fetch-api.png",
+            "published": true,
+            "order": 2,
+            "created_at": "2020-05-18T15:49:46.449Z",
+            "updated_at": "2020-05-18T15:49:46.449Z"
+          }
+        ]
         const { didWatchVideos, videos } = formatVideoArray(data);
 
         dispatch({
