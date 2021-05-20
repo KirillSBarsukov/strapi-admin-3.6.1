@@ -5,9 +5,13 @@ import Wrapper from './Wrapper';
 
 const LeftMenuHeader = () => (
   <Wrapper>
-    <Link to="/" className="leftMenuHeaderLink">
-      <span className="projectName" />
-    </Link>
+    {/*<Link to="/">*/}
+    {/*  <span className="projectName" />*/}
+    {/*</Link>*/}
+    <div style={{display: "flex", alignItems: 'center'}}>
+      <div style={{color: "white", fontSize: 'large'}}>My Content</div>
+    </div>
+
   </Wrapper>
 );
 
