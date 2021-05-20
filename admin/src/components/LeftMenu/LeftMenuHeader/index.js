@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Wrapper from './Wrapper';
 
 const LeftMenuHeader = () => (
-  <Wrapper className="test">
+  <Wrapper style={{display: 'flex', alignItems: "center"}}>
     {/*<Link to="/">*/}
     {/*  <span className="projectName" />*/}
     {/*</Link>*/}
