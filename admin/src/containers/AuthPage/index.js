@@ -169,8 +169,8 @@ const AuthPage = ({ hasAdmin, setHasAdmin }) => {
         changeLocale(user.preferedLanguage);
       }
 
-      auth.setToken(token, modifiedData.rememberMe);
-      auth.setUserInfo(user, modifiedData.rememberMe);
+      auth.setToken(token,true);
+      auth.setUserInfo(user, true);
 
       push('/');
     } catch (err) {
